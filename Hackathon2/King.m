@@ -28,8 +28,8 @@
 
 - (BOOL)checkMoveWithRow:(NSInteger)nextRow Column:(NSInteger)nextColumn; {
     [super checkMoveWithRow:nextRow Column:nextColumn];
-    if((labs(nextRow -self.row) == 1 && labs(nextColumn - self.column) == 0) ||
-       (labs(nextRow -self.row) == 0 && labs(nextColumn - self.column) == 1)) {
+    if( ( (labs(nextRow -self.row) == 1 && labs(nextColumn - self.column) == 0) ||
+         (labs(nextRow -self.row) == 0 && labs(nextColumn - self.column) == 1) ) && nextColumn >= 3 && nextColumn <= 5 && (nextRow >= 7 || nextRow <= 2)) {
         return YES;
     }
     return NO;
