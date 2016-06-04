@@ -22,10 +22,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.game = [[GameObject alloc]initGameBoard:self.vBoard];
+    [GameObject shareInstance:self.vBoard];
     self.arrBoard = [[NSMutableArray alloc]init];
     [self initBoard];
 }
+
+
+#pragma mark - init board
 
 - (void)initBoard {
     for(UIView *subview in self.vBoard.subviews) {
@@ -54,17 +57,24 @@
     piece.column = piece.frame.origin.x/CELL_FRAME;
 }
 
+#pragma mark - logic
+
 - (void)clickOnCell:(Cell *)cell :(Piece *)piece{
     
     if(cell.canMove) {
-        //piece.center = cell.center;
-        NSLog(@"%ld - %ld",cell.row,cell.column);
+        
         for(UIView *subview in self.vBoard.subviews){
             if([subview isKindOfClass:[Piece class]] && ((Piece *)subview).canMove) {
                 [UIView animateWithDuration:1.0f animations:^{
                     subview.center = cell.center;
                     [((Piece *)subview) moveToRow:cell.row Column:cell.column];
                 } completion:^(BOOL finished) {
+                    if([((Piece *)subview) playerColor] == RED) {
+                        [GameObject shareInstance:_vBoard].redPlayer.numberOfTurn ++;
+                    }
+                    if([((Piece *)subview) playerColor] == BLACK) {
+                        [GameObject shareInstance:_vBoard].blackPlayer.numberOfTurn ++;
+                    }
                     ((Piece *)subview).canMove = NO;
                     [Map print];
                     for(Cell *cell in self.arrBoard) {
@@ -78,27 +88,44 @@
 }
 
 - (void)clickOnPiece:(Piece *)piece {
-    [piece called];
-    NSLog(@"%ld - %ld",piece.row,piece.column);
-    for(Cell *cell in self.arrBoard) {
-        if([piece checkMoveWithRow:cell.row Column:cell.column]) {
-            [self setupMoveForPiece:piece];
-           // piece.canMove = YES;
-            if(piece.playerColor == BLACK) {
-                [cell setBackgroundImage:[UIImage imageNamed:EFFECT_BLUE] forState:UIControlStateNormal];
-            }else {
-                [cell setBackgroundImage:[UIImage imageNamed:EFFECT_RED] forState:UIControlStateNormal];
+    if([GameObject shareInstance:_vBoard].checkTurn == 1) {
+        for(Cell *cell in self.arrBoard) {
+            if([piece checkMoveWithRow:cell.row Column:cell.column] && piece.playerColor == RED) {
+                [self setupMoveForPiece:piece];
+                if(piece.playerColor == BLACK) {
+                    [cell setBackgroundImage:[UIImage imageNamed:EFFECT_BLUE] forState:UIControlStateNormal];
+                }else {
+                    [cell setBackgroundImage:[UIImage imageNamed:EFFECT_RED] forState:UIControlStateNormal];
+                }
+                cell.canMove = YES;
+            } else {
+                cell.canMove = NO;
             }
-            cell.canMove = YES;
-        } else {
-            cell.canMove = NO;
         }
     }
+    
+    if([GameObject shareInstance:_vBoard].checkTurn == 2) {
+        for(Cell *cell in self.arrBoard) {
+            if([piece checkMoveWithRow:cell.row Column:cell.column] && piece.playerColor == BLACK) {
+                [self setupMoveForPiece:piece];
+                if(piece.playerColor == BLACK) {
+                    [cell setBackgroundImage:[UIImage imageNamed:EFFECT_BLUE] forState:UIControlStateNormal];
+                }else {
+                    [cell setBackgroundImage:[UIImage imageNamed:EFFECT_RED] forState:UIControlStateNormal];
+                }
+                cell.canMove = YES;
+            } else {
+                cell.canMove = NO;
+            }
+        }
+    }
+    
+   
 }
 
 - (void)setupMoveForPiece:(Piece *)piece {
     piece.canMove = YES;
-    for(UIView *view in self.vBoard.subviews) {
+    for(Piece *view in self.vBoard.subviews) {
         if([view isKindOfClass:[Piece class]] && (Piece *)view != piece) {
             ((Piece *)view).canMove = NO;
         }

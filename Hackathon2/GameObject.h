@@ -17,7 +17,9 @@
 @property NSMutableArray *arrRedChess;
 @property NSMutableArray *arrBlackChess;
 
++ (GameObject *)shareInstance:(UIView *)view;
 - (BOOL)checkGameOver;
 - (id)initGameBoard:(UIView *)view;
+- (int)checkTurn;
 
 @end

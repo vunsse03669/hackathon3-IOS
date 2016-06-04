@@ -19,11 +19,25 @@
 
 @implementation GameObject
 
+static id _instance = nil;
+
++ (GameObject *)shareInstance:(UIView *)view {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if(_instance == nil) {
+            _instance = [[GameObject alloc]initGameBoard:view];
+        }
+    });
+    return _instance;
+}
+
 - (id)initGameBoard:(UIView *)view {
     self = [super init];
     if (self) {
         _redPlayer = [[Player alloc]init];
+        _redPlayer.numberOfTurn = 0;
         _blackPlayer = [[Player alloc]init];
+        _blackPlayer.numberOfTurn = 1;
         _arrRedChess = [[NSMutableArray alloc]init];
         _arrBlackChess = [[NSMutableArray alloc]init];
         
@@ -143,6 +157,13 @@
     [view addSubview:piece];
     piece.frame = CGRectMake(piece.column*CELL_FRAME, piece.row*CELL_FRAME, CELL_FRAME, CELL_FRAME);
     [piece setBackgroundImage:[UIImage imageNamed:name] forState:UIControlStateNormal];
+}
+
+- (int)checkTurn {
+    if(_blackPlayer.numberOfTurn > _redPlayer.numberOfTurn) {
+        return 1;
+    }
+    return 2;   
 }
 
 @end
