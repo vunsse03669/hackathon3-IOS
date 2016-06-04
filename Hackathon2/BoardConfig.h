@@ -38,5 +38,8 @@
 #define BLACK_CANNON @"blueCannon.png"
 #define BLACK_ADVISOR @"blueAdvisor.png"
 
+#define EFFECT_BLUE @"effBlueJustMove.png"
+#define EFFECT_RED @"effRedJustMove.png"
+
 
 #endif /* BoardConfig_h */

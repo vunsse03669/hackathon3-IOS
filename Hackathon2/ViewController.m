@@ -82,11 +82,25 @@
     NSLog(@"%ld - %ld",piece.row,piece.column);
     for(Cell *cell in self.arrBoard) {
         if([piece checkMoveWithRow:cell.row Column:cell.column]) {
-            piece.canMove = YES;
-            [cell setBackgroundImage:[UIImage imageNamed:@"effBlueJustMove.png"] forState:UIControlStateNormal];
+            [self setupMoveForPiece:piece];
+            if(piece.playerColor == BLACK) {
+                [cell setBackgroundImage:[UIImage imageNamed:EFFECT_BLUE] forState:UIControlStateNormal];
+            }else {
+                [cell setBackgroundImage:[UIImage imageNamed:EFFECT_RED] forState:UIControlStateNormal];
+            }
+            
             cell.canMove = YES;
         } else {
             cell.canMove = NO;
+        }
+    }
+}
+
+- (void)setupMoveForPiece:(Piece *)piece {
+    piece.canMove = YES;
+    for(UIView *view in self.vBoard.subviews) {
+        if((Piece *)view != piece) {
+            ((Piece *)view).canMove = NO;
         }
     }
 }
