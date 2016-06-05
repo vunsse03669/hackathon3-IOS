@@ -188,8 +188,19 @@
         }
     }
     if(i == 1) {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"" message:@"Game Over" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Game Over" message:@"Do you want to continue" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles: @"Continued", nil];
         [alert show];
+    }
+}
+
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 0) {
+        NSLog(@"index = 0");
+    }
+    else if(buttonIndex == 1) {
+        NSLog(@"index = 1");
     }
 }
 

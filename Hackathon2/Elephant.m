@@ -30,6 +30,14 @@
            ([self checkBarrierRow:self.row + 1 Column:self.column + 1] && nextRow > self.row && nextColumn > self.column) ||
            ([self checkBarrierRow:self.row - 1 Column:self.column - 1] && nextRow < self.row && nextColumn < self.column) ||
            ([self checkBarrierRow:self.row - 1 Column:self.column + 1] && nextRow < self.row && nextColumn > self.column)) {
+            
+            if(self.playerColor == RED && [self getCellFromBoard:nextRow Column:nextColumn] == 1) {
+                return NO;
+            }
+            
+            if(self.playerColor == BLACK && [self getCellFromBoard:nextRow Column:nextColumn] == 2) {
+                return NO;
+            }
             return YES;
         }
     }

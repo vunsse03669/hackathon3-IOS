@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99BC91511D03C35900E56FC5 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99BC91501D03C35900E56FC5 /* SWRevealViewController.m */; };
 		99CA33071D01C5B6005F1A3F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 99CA33061D01C5B6005F1A3F /* main.m */; };
 		99CA330A1D01C5B6005F1A3F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 99CA33091D01C5B6005F1A3F /* AppDelegate.m */; };
 		99CA330D1D01C5B6005F1A3F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99CA330C1D01C5B6005F1A3F /* ViewController.m */; };
@@ -53,6 +54,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		99BC914F1D03C35900E56FC5 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		99BC91501D03C35900E56FC5 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		99CA33021D01C5B6005F1A3F /* Hackathon2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hackathon2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99CA33061D01C5B6005F1A3F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		99CA33081D01C5B6005F1A3F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -127,6 +130,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		99BC910B1D03C2CF00E56FC5 /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				99BC914E1D03C35900E56FC5 /* SWRevealViewController */,
+			);
+			name = Libs;
+			sourceTree = "<group>";
+		};
+		99BC914E1D03C35900E56FC5 /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				99BC914F1D03C35900E56FC5 /* SWRevealViewController.h */,
+				99BC91501D03C35900E56FC5 /* SWRevealViewController.m */,
+			);
+			path = SWRevealViewController;
+			sourceTree = "<group>";
+		};
 		99CA32F91D01C5B6005F1A3F = {
 			isa = PBXGroup;
 			children = (
@@ -148,12 +168,12 @@
 			children = (
 				99CA33081D01C5B6005F1A3F /* AppDelegate.h */,
 				99CA33091D01C5B6005F1A3F /* AppDelegate.m */,
+				99BC910B1D03C2CF00E56FC5 /* Libs */,
 				99CA331F1D01C5EA005F1A3F /* Assets */,
 				99CA33201D01C5F6005F1A3F /* Utilities */,
 				99CA331C1D01C5C9005F1A3F /* Model */,
-				99CA331E1D01C5D8005F1A3F /* Controller */,
 				99CA331D1D01C5D3005F1A3F /* View */,
-				99CA330E1D01C5B6005F1A3F /* Main.storyboard */,
+				99CA331E1D01C5D8005F1A3F /* Controller */,
 				99CA33131D01C5B6005F1A3F /* LaunchScreen.storyboard */,
 				99CA33111D01C5B6005F1A3F /* Assets.xcassets */,
 				99CA33161D01C5B6005F1A3F /* Info.plist */,
@@ -194,6 +214,7 @@
 		99CA331E1D01C5D8005F1A3F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				99CA330E1D01C5B6005F1A3F /* Main.storyboard */,
 				99CA330B1D01C5B6005F1A3F /* ViewController.h */,
 				99CA330C1D01C5B6005F1A3F /* ViewController.m */,
 			);
@@ -400,6 +421,7 @@
 				99CA33341D01C6BE005F1A3F /* Chariot.m in Sources */,
 				99CA33371D01C6BE005F1A3F /* King.m in Sources */,
 				99CA33451D01C77D005F1A3F /* Player.m in Sources */,
+				99BC91511D03C35900E56FC5 /* SWRevealViewController.m in Sources */,
 				99CA33071D01C5B6005F1A3F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

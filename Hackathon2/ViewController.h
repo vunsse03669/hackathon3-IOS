@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "GameObject.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *vBoard;
 @property GameObject *game;

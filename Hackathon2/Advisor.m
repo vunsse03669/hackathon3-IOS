@@ -30,6 +30,13 @@
 
     
     if(labs(nextRow -self.row) == 1 && labs(nextColumn - self.column) == 1 && nextColumn >= 3 && nextColumn <= 5 && (nextRow >= 7 || nextRow <= 2)) {
+        if(self.playerColor == RED && [self getCellFromBoard:nextRow Column:nextColumn] == 1) {
+            return NO;
+        }
+        
+        if(self.playerColor == BLACK && [self getCellFromBoard:nextRow Column:nextColumn] == 2) {
+            return NO;
+        }
         return YES;
     }
     return NO;
