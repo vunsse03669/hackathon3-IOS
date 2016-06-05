@@ -11,6 +11,7 @@
 #import "Piece.h"
 #import "Map.h"
 #import "BoardConfig.h"
+#import "King.h"
 
 
 
@@ -106,6 +107,7 @@
             }
             
             [self getPieceCanMove].canMove = NO;
+            [self checkGameOver];
 
             [Map print];
         }];
@@ -176,6 +178,19 @@
         }
     }
     return nil;
+}
+
+- (void)checkGameOver {
+    int i = 0;
+    for(Piece *piece in self.vBoard.subviews) {
+        if([piece isKindOfClass:[King class]]) {
+            i ++;
+        }
+    }
+    if(i == 1) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"" message:@"Game Over" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+        [alert show];
+    }
 }
 
 
